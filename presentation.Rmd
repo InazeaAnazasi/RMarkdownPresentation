@@ -17,6 +17,7 @@ output: html_document
 ## general principle
 ## GUI "GitKraken"
 ## usage from within RStudio
+this is Lukas' Text
 
 
 
