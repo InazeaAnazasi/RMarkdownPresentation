@@ -1,0 +1,24 @@
+---
+title: "RMarkdown and Version Control with git"
+author: "Lukas Schmid, Chân Lê"
+date: "34 1 2020"
+output: html_document
+---
+
+# Introduction to R Markdown
+
+## text formatting
+
+## chunk options for code
+## visualisation formatting
+## table and reporting formatting
+## document types and presentations)
+# version control with git
+## general principle
+## GUI "GitKraken"
+## usage from within RStudio
+
+
+
+
+Lukas Schmid  vor 18 Minuten
