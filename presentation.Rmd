@@ -1,7 +1,7 @@
 ---
 title: "RMarkdown and Version Control with git"
 author: "Lukas Schmid, Chân Lê"
-date: "34 1 2020"
+date: "17 1 2020"
 output: html_document
 ---
 
