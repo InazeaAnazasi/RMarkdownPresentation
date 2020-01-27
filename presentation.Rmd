@@ -12,6 +12,7 @@ output: html_document
 ## __1. General__
 RMarkdown can be used to save and execute codes, as well as generate high-quality reports to be shared with the audience.
 
+A (newer version) cheatsheet of RMarkdown can be found here: https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf
 
 ## __2. Installation__
 
@@ -126,6 +127,9 @@ Inline code blocks are highlighted using back-ticks, for example the package `gg
   + Then add first sub-point with a plus sign
   + Another sub-point
     - Then a sub-sub-point using minus sign
+    
+Bullet points need to have double line breaks before the former block of text. 
+Continued lists have no double line breaks. Single line breaks will be ignored.
 
 ```{r eval = F}
 1. You can create numbered list with, well, numbers.
@@ -142,6 +146,9 @@ Inline code blocks are highlighted using back-ticks, for example the package `gg
 
 ### __b. Chunk code & Chunk options__
 
+For all of this chapter and of course much more, see [https://bookdown.org/yihui/rmarkdown/r-code.html](chapter 2.6 in the
+Definitive Guide to R Markdown.)
+
 If you want to execute your code in RMarkdown, put them into code chunk brackets
 (but don't normally put them as a comment - we just did this to demonstrate how
 it should look). You can get the brackes by  ___pressing Ctrl + ALt + I__ ).
@@ -154,10 +161,27 @@ it should look). You can get the brackes by  ___pressing Ctrl + ALt + I__ ).
   # ```
 ```
 
+Chunks have chunk options that change their behaviour when knitted. By default,
+code in all chunks will be run by R, the code will be displayed in the final
+Markdown-document and the outputs (if any) will be displayed. There are some
+useful options to change this behaviour (standard behaviour is mentioned):
 
-A (newer version) cheatsheet of RMarkdown can be found here: https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf
+- `eval = TRUE`: Run code in chunk
+- `echo = TRUE`: display the source code in the document
+- `results = markup`: how to display the results of a code chunk
+- `include = TRUE`: Include anything from the code at all (`include = FALSE` is equal to `echo = FALSE, results = 'hide', warning = FALSE, message = FALSE`)
+
+Additionally, the first option in a code chunk can be the label of that chunk.
+Labels are useful when you have lots of them and try to debug your document; 
+they will also be used for filenames in plots.
+
+And finally, you can also run code inline. So, if I want to report the mean of 
+some variable directly in the text, I can write `#r mean(cars$speed)` (without
+the hashtag) to get the result, `r mean(cars$speed)`.
 
 ### visualisation formatting
+
+
 ### table and reporting formatting
 ### document types and presentations)
 

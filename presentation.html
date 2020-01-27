@@ -375,6 +375,7 @@ summary {
 <div id="general" class="section level2">
 <h2><strong>1. General</strong></h2>
 <p>RMarkdown can be used to save and execute codes, as well as generate high-quality reports to be shared with the audience.</p>
+<p>A (newer version) cheatsheet of RMarkdown can be found here: <a href="https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf" class="uri">https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf</a></p>
 </div>
 <div id="installation" class="section level2">
 <h2><strong>2. Installation</strong></h2>
@@ -464,6 +465,7 @@ Alt-H1
 </ul></li>
 </ul></li>
 </ul>
+<p>Bullet points need to have double line breaks before the former block of text. Continued lists have no double line breaks. Single line breaks will be ignored.</p>
 <pre class="r"><code>1. You can create numbered list with, well, numbers.
 2. Something something
    i) A sub-point (with three spaces at the beginning, to get the indentation)
@@ -482,14 +484,22 @@ Alt-H1
 </div>
 <div id="b.-chunk-code-chunk-options" class="section level3">
 <h3><strong>b. Chunk code &amp; Chunk options</strong></h3>
-<p>If you want to execute your code in RMarkdown, put them into code chunk brackets ( <strong>or press Ctrl + ALt + I</strong> ). For example:</p>
-<pre class="r"><code>test &lt;- rnorm(20, mean = 0, sd = 3)
-mean(test)</code></pre>
-<pre><code>## [1] -0.05555</code></pre>
-<pre class="r"><code>sd(test)</code></pre>
-<pre><code>## [1] 2.649</code></pre>
-<p>```</p>
-<p>A (newer version)cheatsheet of can be found here: <a href="https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf" class="uri">https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf</a></p>
+<p>For all of this chapter and of course much more, see <a href="chapter%202.6%20in%20the%20Definitive%20Guide%20to%20R%20Markdown.">https://bookdown.org/yihui/rmarkdown/r-code.html</a></p>
+<p>If you want to execute your code in RMarkdown, put them into code chunk brackets (but don’t normally put them as a comment - we just did this to demonstrate how it should look). You can get the brackes by _<strong>pressing Ctrl + ALt + I</strong> ).</p>
+<pre class="r"><code>  #```{r}
+  test &lt;- rnorm(20, mean = 0, sd = 3)
+  mean(test)
+  sd(test)
+  # ```</code></pre>
+<p>Chunks have chunk options that change their behaviour when knitted. By default, code in all chunks will be run by R, the code will be displayed in the final Markdown-document and the outputs (if any) will be displayed. There are some useful options to change this behaviour (standard behaviour is mentioned):</p>
+<ul>
+<li><code>eval = TRUE</code>: Run code in chunk</li>
+<li><code>echo = TRUE</code>: display the source code in the document</li>
+<li><code>results = markup</code>: how to display the results of a code chunk</li>
+<li><code>include = TRUE</code>: Include anything from the code at all (<code>include = FALSE</code> is equal to <code>echo = FALSE, results = &#39;hide&#39;, warning = FALSE, message = FALSE</code>)</li>
+</ul>
+<p>Additionally, the first option in a code chunk can be the label of that chunk. Labels are useful when you have lots of them and try to debug your document; they will also be used for filenames in plots.</p>
+<p>And finally, you can also run code inline. So, if I want to report the mean of some variable directly in the text, I can write <code>#r mean(cars$speed)</code></p>
 </div>
 <div id="visualisation-formatting" class="section level3">
 <h3>visualisation formatting</h3>
