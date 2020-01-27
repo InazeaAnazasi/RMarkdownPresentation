@@ -381,18 +381,18 @@ summary {
 <div id="introduction-to-r-markdown" class="section level1">
 <h1><strong>Introduction to R Markdown</strong></h1>
 <hr />
-<div id="general" class="section level3">
-<h3><strong>1. General</strong></h3>
+<div id="general" class="section level2">
+<h2><strong>1. General</strong></h2>
 <p>RMarkdown can be used to save and execute codes, as well as generate high-quality reports to be shared with the audience.</p>
 </div>
-<div id="installation" class="section level3">
-<h3><strong>2. Installation</strong></h3>
-<div id="a.-prerequisite" class="section level4">
-<h4><strong>a. Prerequisite</strong></h4>
+<div id="installation" class="section level2">
+<h2><strong>2. Installation</strong></h2>
+<div id="a.-prerequisite" class="section level3">
+<h3><strong>a. Prerequisite</strong></h3>
 <p>Make sure that you have the <strong>latest version of R and RStudio</strong>. It was not officially mentioned on the RMarkdown official guide, but I did run into troubles trying to install RMarkdown without knowing that some conflicts could exist if you were not to get R in your computer updated.</p>
 </div>
-<div id="b.-install-rmarkdown" class="section level4">
-<h4><strong>b. Install RMarkdown</strong></h4>
+<div id="b.-install-rmarkdown" class="section level3">
+<h3><strong>b. Install RMarkdown</strong></h3>
 <p>Next you can install RMarkdown package in R:</p>
 <pre class="r"><code># Install from CRAN
 install.packages(&#39;rmarkdown&#39;)
@@ -403,17 +403,17 @@ if (!requireNamespace(&quot;devtools&quot;))
   install.packages(&#39;devtools&#39;)
 devtools::install_github(&#39;rstudio/rmarkdown&#39;)</code></pre>
 </div>
-<div id="c.-latex-for-pdf-output" class="section level4">
-<h4><strong>c. LaTeX for PDF output</strong></h4>
+<div id="c.-latex-for-pdf-output" class="section level3">
+<h3><strong>c. LaTeX for PDF output</strong></h3>
 <p>If you want to generate PDF output, you will need to install LaTeX. For R Markdown users who have not installed LaTeX before, you can install TinyTeX (<a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>):</p>
 <pre class="r"><code>install.packages(&quot;tinytex&quot;)
 tinytex::install_tinytex()  # install TinyTeX</code></pre>
 </div>
 </div>
-<div id="basics" class="section level3">
-<h3><strong>3. Basics</strong></h3>
-<div id="a.-text-formating" class="section level4">
-<h4><strong>a. Text formating</strong></h4>
+<div id="basics" class="section level2">
+<h2><strong>3. Basics</strong></h2>
+<div id="a.-text-formating" class="section level3">
+<h3><strong>a. Text formating</strong></h3>
 <p>Write normally for plain text</p>
 <blockquote>
 <p>Highlight some chunk of text or blockquotes with the greater-than sign</p>
@@ -436,13 +436,7 @@ tinytex::install_tinytex()  # install TinyTeX</code></pre>
 <h5>Header 5</h5>
 <div id="header-6" class="section level6">
 <h6>Header 6</h6>
-<p>Alternatively, for H1 and H2, an underline-ish style:</p>
-</div>
-</div>
-</div>
-</div>
-<div id="alt-h2" class="section level3">
-<h3>Alt-H2</h3>
+<p>Alternatively, you can add a horinzontal line to separate sections of your report:</p>
 <hr />
 <p>Inline code blocks are highlighted using back-ticks, for example the package <code>ggplot2</code></p>
 <ul>
@@ -463,8 +457,13 @@ tinytex::install_tinytex()  # install TinyTeX</code></pre>
 <li>Yet another sub-point</li>
 </ol></li>
 </ol>
-<div id="b.-chunk-code-chunk-options" class="section level4">
-<h4><strong>b. Chunk code &amp; Chunk options</strong></h4>
+<p>And finally, you can also run code inline. So, if I want to report the mean of some variable directly in the text, I can write <code>#r mean(cars$speed)</code> (without the hashtag) to get the result, 15.4.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="b.-chunk-code-chunk-options" class="section level3">
+<h3><strong>b. Chunk code &amp; Chunk options</strong></h3>
 <p>If you want to execute your code in RMarkdown, put them into the following code chunk brackets ( <strong>or press Ctrl + ALt + I</strong> ). The codes are displayed in a gray box, while the outputs are in a white box. For example:</p>
 <pre class="r"><code>  library(tidyr)
   library(ggplot2)
@@ -506,7 +505,7 @@ tinytex::install_tinytex()  # install TinyTeX</code></pre>
 <li>First, I want to call some needed packages. If you want to <strong>run these codes but not include them in the report</strong>, type in chunk option <code>include = FALSE</code></li>
 </ul>
 <blockquote>
-<p>#####The code ran but nothing appeared</p>
+<p>The code ran but nothing appeared</p>
 </blockquote>
 <ul>
 <li>If you only want to show some <strong>codes without running them</strong>, type in chunk option <code>eval = FALSE</code></li>
@@ -515,6 +514,16 @@ tinytex::install_tinytex()  # install TinyTeX</code></pre>
 <ul>
 <li>On the other hand, if you want to show some results without the codes, type in chunk option <code>echo = FALSE</code></li>
 </ul>
+<pre><code>## [1] &quot;Welcome to RMarkDown!&quot;</code></pre>
+<p><strong>Summary:</strong> Chunks have chunk options that change their behaviour when knitted. By default, code in all chunks will be run by R, the code will be displayed in the final Markdown-document and the outputs (if any) will be displayed. There are some useful options to change this behaviour (standard behaviour is mentioned):</p>
+<ul>
+<li><code>eval = TRUE</code>: Run code in chunk</li>
+<li><code>echo = TRUE</code>: display the source code in the document</li>
+<li><code>results = markup</code>: how to display the results of a code chunk</li>
+<li><code>include = TRUE</code>: Include anything from the code at all (<code>include = FALSE</code> is equal to <code>echo = FALSE, results = &#39;hide&#39;, warning = FALSE, message = FALSE</code>)</li>
+</ul>
+<p>Additionally, the first option in a code chunk can be the label of that chunk. Labels are useful when you have lots of them and try to debug your document; they will also be used for filenames in plots.</p>
+<pre class="r"><code>  paste(&quot;Welcome&quot;,&quot;to&quot;,&quot;RMarkDown!&quot;)</code></pre>
 <pre><code>## [1] &quot;Welcome to RMarkDown!&quot;</code></pre>
 <ul>
 <li>Now I can load the data and view it.</li>
@@ -543,7 +552,7 @@ tinytex::install_tinytex()  # install TinyTeX</code></pre>
 ## 5 setosa  Sepal.Length   4.9
 ## 6 setosa  Sepal.Width    3</code></pre>
 <ul>
-<li>Now I plot it. Multiple bar plots showing the distribution of different measurements of the iris flowers, facetting among different species. To align this plot in the middle, add chunk option <code>algin = center</code> (others options including <code>left</code> and <code>right</code>). To resize the plot, add chunk option <code>fig.width</code> and <code>fig.height</code> with chosen values (in inches). Chunk option <code>fig.cap</code> is used to insert a string caption below the graph.</li>
+<li>Now I plot it. Multiple bar plots showing the distribution of different measurements of the iris flowers, facetting among different species. To align this plot in the middle, add chunk option <code>align = center</code> (others options including <code>left</code> and <code>right</code>). To resize the plot, add chunk option <code>fig.width</code> and <code>fig.height</code> with chosen values (in inches). Chunk option <code>fig.cap</code> is used to insert a string caption below the graph.</li>
 </ul>
 <pre class="r"><code>  ggplot(data.plot, aes(group = Measurement, x = Measurement, y = Value)) + 
     geom_boxplot() +
@@ -556,8 +565,8 @@ Figure 1: possible caption for the graph
 </p>
 </div>
 </div>
-<div id="c.-tables-in-rmarkdown-using-knitr-and-kableextra" class="section level4">
-<h4><strong>c. Tables in RMarkdown using <code>knitr</code> and <code>kableExtra</code></strong></h4>
+<div id="c.-tables-in-rmarkdown-using-knitr-and-kableextra" class="section level3">
+<h3><strong>c. Tables in RMarkdown using <code>knitr</code> and <code>kableExtra</code></strong></h3>
 <p>As a default, you can always show a data set by just calling it directly. The dataset is shorten for the purpose of demonstration.</p>
 <pre class="r"><code>  data &lt;- head(data, 10)
   data</code></pre>
@@ -573,15 +582,13 @@ Figure 1: possible caption for the graph
 ## 9           4.4         2.9          1.4         0.2  setosa
 ## 10          4.9         3.1          1.5         0.1  setosa</code></pre>
 <p>There is another alternative to displaying a data set, or broadly speaking, a table. With <code>knitr</code> and <code>kableExtra</code></p>
-<pre class="r"><code>  #install.packages(knitr)
-  # install.packages(&quot;kableExtra&quot;)
+<pre class="r"><code>  #install.packages(&quot;knitr&quot;)
+  #install.packages(&quot;kableExtra&quot;)
   library(knitr)
   library(kableExtra)
   head(data) %&gt;% 
     kable() %&gt;% 
-    kable_styling() %&gt;%
-    column_spec(1:2, bold = T, color = &quot;white&quot;, background = &quot;blue&quot;) %&gt;% 
-    row_spec(3:5, bold = T, color = &quot;white&quot;, background = &quot;blue&quot;)</code></pre>
+    kable_styling()</code></pre>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -604,10 +611,10 @@ Species
 </thead>
 <tbody>
 <tr>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:right;">
 5.1
 </td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:right;">
 3.5
 </td>
 <td style="text-align:right;">
@@ -621,10 +628,10 @@ setosa
 </td>
 </tr>
 <tr>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:right;">
 4.9
 </td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:right;">
 3.0
 </td>
 <td style="text-align:right;">
@@ -638,61 +645,61 @@ setosa
 </td>
 </tr>
 <tr>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:right;">
 4.7
 </td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:right;">
 3.2
 </td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:right;">
 1.3
 </td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:right;">
 0.2
 </td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:left;">
 setosa
 </td>
 </tr>
 <tr>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:right;">
 4.6
 </td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:right;">
 3.1
 </td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:right;">
 1.5
 </td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:right;">
 0.2
 </td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:left;">
 setosa
 </td>
 </tr>
 <tr>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:right;">
 5.0
 </td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:right;">
 3.6
 </td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:right;">
 1.4
 </td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:right;">
 0.2
 </td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:left;">
 setosa
 </td>
 </tr>
 <tr>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:right;">
 5.4
 </td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;">
+<td style="text-align:right;">
 3.9
 </td>
 <td style="text-align:right;">
@@ -707,39 +714,74 @@ setosa
 </tr>
 </tbody>
 </table>
-<p>A (newer version)cheatsheet of can be found here: <a href="https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf" class="uri">https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf</a></p>
+<p>There are numerous features and layers that you can add to this table (same logic as in ggplot2). We would like to only show one example that we think is relevant for the report: You can hightlight columns or rows in your table with <code>column_spec()</code> and <code>row_spec()</code>. For example:</p>
+<p>Other advanced formatting of tables (e.g. their alignement, stretching over multiple pages…) in PDFs can be more cumbersome. Here, we only reference to <a href="chapter%202.6.2%20in%20the%20Markdown%20Guide">https://bookdown.org/yihui/rmarkdown/r-code.html#tables</a>. Vignettes on how to use kableExtra can be found on the <a href="https://cran.r-project.org/web/packages/kableExtra/index.html">CRAN-page</a>.</p>
+<p>When it comes to reporting results, plain <code>knitR</code> is not enough. There are multiple packages available to do this (<a href="https://rmarkdown.rstudio.com/lesson-7.html">see some examples here</a>); I have used <code>stargazer</code> in the past, which is especially useful in PFDs. It generates HTML-Code (or LaTeX- code) directly from R-code. Due to this, we need a workaround: we always want the result of stargazer to be displayed as is. This way, the results (now in) HTML) will be read by the browser to be displayed as a table. An example helps:</p>
+<p><strong>(Insert stargazer code chunk)</strong></p>
 </div>
 </div>
-<div id="text-formatting" class="section level3">
-<h3>text formatting</h3>
+<div id="yaml" class="section level2">
+<h2><strong>4. YAML</strong></h2>
 </div>
-<div id="chunk-options-for-code" class="section level3">
-<h3>chunk options for code</h3>
-</div>
-<div id="visualisation-formatting" class="section level3">
-<h3>visualisation formatting</h3>
-</div>
-<div id="table-and-reporting-formatting" class="section level3">
-<h3>table and reporting formatting</h3>
-</div>
-<div id="document-types-and-presentations" class="section level3">
-<h3>document types and presentations)</h3>
-</div>
+<div id="remarks-literature" class="section level2">
+<h2><strong>5. Remarks &amp; Literature</strong></h2>
+<ul>
+<li>A (newer version)cheatsheet of can be found here: <a href="https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf" class="uri">https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf</a></li>
+</ul>
+<hr />
 </div>
 </div>
 <div id="version-control-with-git" class="section level1">
-<h1>version control with git</h1>
+<h1><strong>Version control with git</strong></h1>
 <div id="general-principle" class="section level2">
-<h2>general principle</h2>
+<h2><strong>1. General principle</strong></h2>
+<p>Git is a version control software for line-based data (that means, you can version control things like .txt, .csv, LaTeX, R, and other code, but not formats like .PDF, .docx, .xlsx, ar images). It is useful because it is (comparatively) simple and not storage-intensive.</p>
+<p>You can use it locally, but you can also connect it to specialised websites (like <a href="https://github.com/">GitHub</a> or <a href="https://bitbucket.org/">BitBucket</a>) - this ultimately means that you have an opportunity to back-up all of your code, for no money, on the internet (and I think it is relatively secure, so your code will not be stolen). GitHub also has a good <a href="https://education.github.com/pack">education plan</a> which gives you access to some cool programs.</p>
 </div>
-<div id="gui-gitkraken" class="section level2">
-<h2>GUI “GitKraken”</h2>
+<div id="how-it-works" class="section level2">
+<h2><strong>2. How it works</strong></h2>
+<p>Many examples on the web use git from your command line. This is probably a skill worth to learn at some point; however, you can do without - and as one website out it, “no one is handing out nerd badges”, so using the command line because it looks cool is probably stupid (though we all do it, of course). So here come only the basic basics.</p>
+<div id="a.-creating-a-repsository" class="section level3">
+<h3><strong>a. Creating a repsository</strong></h3>
+<p>Git relies on so-called repositories. For us, they are simply folders that contain an additional <code>.git</code> folder and sometimes a <code>.gitignore</code> file, and of course everything you cant to version-control.</p>
+<p>You can create a repository locally on your computer. If you want to use that repository online, you can later push it to an online service. If you want to use it online from the start, better create the repository online and then ‘clone’ it to your machine.</p>
 </div>
-<div id="usage-from-within-rstudio" class="section level2">
-<h2>usage from within RStudio</h2>
-<p>this is Lukas’ Text</p>
-<p>##hello from Chan</p>
-<p>Lukas Schmid vor 18 Minuten</p>
+<div id="b.-applying-changes" class="section level3">
+<h3><strong>b. Applying changes</strong></h3>
+<p>Whenever something changes in your repository, you have to first <strong>add</strong> the changes to your index. Because the index is the staging area (german: Zwischenschritt), this is also called <strong>staging</strong>. After changes are added, they are not yet safed! To actually apply changes, you have to <strong>commit</strong> them. When committing, you have to specify a commit message that usually contains info about what you have done in that commit.</p>
+<p>If you use an online repo, you have to <strong>push</strong> those changes (to the server) so they not only exist on your local machine.</p>
+</div>
+<div id="c.-workflow" class="section level3">
+<h3><strong>c. Workflow</strong></h3>
+<p>Of course, if you work online, you also have to check for changes on the server (though this is less of an issue if you work alone on only one machine). This is called to <strong>pull</strong>. As a result, we can summarise the following ideal workflow:</p>
+<ol style="list-style-type: decimal">
+<li>Pull to sync your local repo with the online repo.</li>
+<li>Work.</li>
+<li>Stage changes (whenever it seems reasonable; these can be very small steps! The more and smaller steps you stage and commit, the higher is the change that you can return to a well working version of your code.)</li>
+<li>Commit the changes.</li>
+<li>Push the changes.</li>
+<li>Repeat 2 to 6 until you’re done.</li>
+</ol>
+</div>
+<div id="d.-branches-and-merges" class="section level3">
+<h3><strong>d. Branches and merges</strong></h3>
+<p>When you pull and there are changes in the online repo, these changes will automatically be applied to your code. In some cases (e.g. the same line has been changed in the online and the local repo, but in different ways), you have to manually resolve these merge conflicts. This usually means to decide which line should be used.</p>
+<p>When more than one person works on a code, it is advisable to branch. This means that effects in one branch won’t affect any other branch. However, due to time and ressource constraints, we won’t cover this topic here.</p>
+</div>
+</div>
+<div id="appendix-glossary" class="section level2">
+<h2><strong>3. Appendix: glossary</strong></h2>
+<ul>
+<li>working directory: contains all your files</li>
+<li>repo: short for repository</li>
+<li>to clone a repo: copy an existing online-repo to your local machine</li>
+<li>HEAD: the last version of your repo (or the branch you are currently in); not the same as the working directory</li>
+<li>index: the staging area where you ‘park’ changes until you commit them</li>
+<li>to stage or add change: to apply changes to the index</li>
+<li>to commit changes: to add changes from the index to the HEAD, thus making them visible</li>
+<li>to push changes: to add changes from your local repo to the online repo</li>
+<li>to pull changes: to add changes from your online repo to the local repo</li>
+</ul>
 </div>
 </div>
 
