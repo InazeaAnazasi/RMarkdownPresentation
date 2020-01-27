@@ -9,6 +9,12 @@ output: html_document
 
 ------
 
+### __1. General__
+RMarkdown can be used to save and execute codes, as well as generate high-quality reports to be shared with the audience.
+
+
+#### __b. Install RMarkdown__
+### __2. Installation__
 ## __1. General__
 RMarkdown can be used to save and execute codes, as well as generate high-quality reports to be shared with the audience.
 
