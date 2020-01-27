@@ -179,12 +179,64 @@ And finally, you can also run code inline. So, if I want to report the mean of
 some variable directly in the text, I can write `#r mean(cars$speed)` (without
 the hashtag) to get the result, `r mean(cars$speed)`.
 
-### visualisation formatting
+### __c. formatting tables__
+
+By default, R output looks like this:
+
+```{r}
+# a linear regression:
+lm(speed ~ dist, cars)
+# some data:
+iris[1:5, ]
+```
+
+This is not exactly pretty reporting. But you can report results in a way that
+is more readable (be sure to have `knitr` installed):
+
+```{r}
+knitr::kable(iris[1:5, ], caption = 'A caption')
+```
+
+Advanced formatting of tables (e.g. their alignement, stretching over multiple
+pages...) in PDFs can be more cumbersome. Here, we only reference to
+[https://bookdown.org/yihui/rmarkdown/r-code.html#tables](chapter
+2.6.2 in the Markdown Guide). Vignettes on how to use kableExtra can be found on
+the [CRAN-page](https://cran.r-project.org/web/packages/kableExtra/index.html).
+
+When it comes to reporting results, plain `knitR` is not enough. There are
+multiple packages available to do this ([see some examples
+here](https://rmarkdown.rstudio.com/lesson-7.html)); I have used `stargazer` in
+the past, which is especially useful in PFDs. It generates HTML-Code (or LaTeX-
+code) directly from R-code. Due to this, we need a workaround: we always want
+the result of stargazer to be displayed as is. This way, the results (now in)
+HTML) will be read by the browser to be displayed as a table. An example helps:
+
+```{r}
+# This will only give us some HTML-formatted text:
+stargazer::stargazer(lm(speed ~ dist, cars), type ="html")
+```
+
+```{r results='asis'}
+# We now have the chunk-option results='asis':
+stargazer::stargazer(lm(speed ~ dist, cars), type ="html")
+```
 
 
-### table and reporting formatting
-### document types and presentations)
+### __d. printing plots__
 
+It wll come as now surprise to you that plots will automatically be displayed:
+
+```{r fig.cap="Caption"}
+library(ggplot2)
+ggplot(mtcars, aes(cyl, mpg, group=cyl)) +
+  geom_boxplot()
+```
+
+Using code chunk options, you can add captions to the table
+(`fig.cap="Caption`). Size of plots is generally controlled by code chunk options and can be really exhausting. I can not tell you more than this
+[https://sebastiansauer.github.io/figure_sizing_knitr/](very
+good blog entry) does. Sizing figures will remain a tedious task and has to be
+done by hand, that is for sure.
 
 # version control with git
 ## general principle
