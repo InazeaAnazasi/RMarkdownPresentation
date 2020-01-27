@@ -234,17 +234,91 @@ ggplot(mtcars, aes(cyl, mpg, group=cyl)) +
 
 Using code chunk options, you can add captions to the table
 (`fig.cap="Caption`). Size of plots is generally controlled by code chunk options and can be really exhausting. I can not tell you more than this
-[https://sebastiansauer.github.io/figure_sizing_knitr/](very
-good blog entry) does. Sizing figures will remain a tedious task and has to be
+[very good blog entry](https://sebastiansauer.github.io/figure_sizing_knitr/) does. Sizing figures will remain a tedious task and has to be
 done by hand, that is for sure.
 
 # version control with git
+
 ## general principle
-## GUI "GitKraken"
-## usage from within RStudio
-this is Lukas' Text
 
+Git is a version control software for line-based data (that means, you can
+version control things like .txt, .csv, LaTeX, R, and other code, but not 
+formats like .PDF, .docx, .xlsx, ar images). It is useful because it is (comparatively) simple and not storage-intensive.
 
-##hello from Chan
+You can use it locally, but you can also connect it to specialised websites 
+(like  [GitHub](https://github.com/) or [BitBucket](https://bitbucket.org/)) - 
+this ultimately means that you have an opportunity to back-up all of your code,
+for no money, on the internet (and I think it is relatively secure, so your
+code will not be stolen). GitHub also has a good 
+[education plan](https://education.github.com/pack) which gives you
+access to some cool programs.
 
-Lukas Schmid  vor 18 Minuten
+## How it works
+
+Many examples on the web use git from your command line. This is probably a
+skill worth to learn at some point; however, you can do without - and as one 
+website out it, "no one is handing out nerd badges", so using the command line 
+because it looks cool is probably stupid (though we all do it, of course). So
+here come only the basic basics.
+
+### 1. Creating a repsository
+
+Git relies on so-called repositories. For us, they are simply folders that 
+contain an additional `.git` folder and sometimes a `.gitignore` file, and of 
+course everything you cant to version-control.
+
+You can create a repository locally on your computer. If you want to use that
+repository online, you can later push it to an online service. If you want to
+use it online from the start, better create the repository online and then 
+'clone' it to your machine.
+
+### 2. Applying changes
+
+Whenever something changes in your repository, you have to first **add** the changes to your index. Because the index is the staging area (german: Zwischenschritt), this is also called **staging**. After changes are added, they
+are not yet safed! To actually apply changes, you have to **commit** them. When
+committing, you have to specify a commit message that usually contains info 
+about what you have done in that commit. 
+
+If you use an online repo, you have to **push** those changes (to the server) so
+they not only exist on your local machine.
+
+### 3. Workflow
+
+Of course, if you work online, you also have to check for changes on the server
+(though this is less of an issue if you work alone on only one machine). This is
+called to **pull**. As a result, we can summarise the following ideal workflow:
+
+1. Pull to sync your local repo with the online repo.
+2. Work.
+3. Stage changes (whenever it seems reasonable; these can be very small steps!
+The more and smaller steps you stage and commit, the higher is the change that
+you can return to a well working version of your code.)
+4. Commit the changes.
+5. Push the changes.
+6. Repeat 2 to 6 until you're done.
+
+### 4. Branches and merges
+
+When you pull and there are changes in the online repo, these changes will
+automatically be applied to your code. In some cases (e.g. the same line has
+been changed in the online and the local repo, but in different ways), you have
+to manually resolve these merge conflicts. This usually means to decide which
+line should be used.
+
+When more than one person works on a code, it is advisable to branch. This means
+that effects in one branch won't affect any other branch. However, due to time
+and ressource constraints, we won't cover this topic here.
+
+## Appendix: glossary
+
+- working directory: contains all your files
+- repo: short for repository
+- to clone a repo: copy an existing online-repo to your local machine
+- HEAD: the last version of your repo (or the branch you are currently in); not
+the same as the working directory
+- index: the staging area where you 'park' changes until you commit them
+- to stage or add change: to apply changes to the index
+- to commit changes: to add changes from the index to the HEAD, thus making them
+visible 
+- to push changes: to add changes from your local repo to the online repo
+- to pull changes: to add changes from your online repo to the local repo
