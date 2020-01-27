@@ -64,10 +64,7 @@ You can have different sizes of header with the number sign #:
 ##### Header 5   
 ###### Header 6
 
-Alternatively, for H1 and H2, an underline-ish style:
-
-### Alt-H2
-
+Alternatively, you can add a horinzontal line to separate sections of your report:
 ------
 
 Inline code blocks are highlighted using back-ticks, for example the package `ggplot2`
