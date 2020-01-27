@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -331,6 +330,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -372,12 +372,12 @@ summary {
 <div id="introduction-to-r-markdown" class="section level1">
 <h1><strong>Introduction to R Markdown</strong></h1>
 <hr />
-<div id="general" class="section level3">
-<h3><strong>1. General</strong></h3>
+<div id="general" class="section level2">
+<h2><strong>1. General</strong></h2>
 <p>RMarkdown can be used to save and execute codes, as well as generate high-quality reports to be shared with the audience.</p>
 </div>
-<div id="installation" class="section level3">
-<h3><strong>2. Installation</strong></h3>
+<div id="installation" class="section level2">
+<h2><strong>2. Installation</strong></h2>
 <div id="a.-prerequisite" class="section level4">
 <h4><strong>a. Prerequisite</strong></h4>
 <p>Make sure that you have the <strong>latest version of R and RStudio</strong>. It was not officially mentioned on the RMarkdown official guide, but I did run into troubles trying to install RMarkdown without knowing that some conflicts could exist if you were not to get R in your computer updated.</p>
@@ -401,10 +401,11 @@ devtools::install_github(&#39;rstudio/rmarkdown&#39;)</code></pre>
 tinytex::install_tinytex()  # install TinyTeX</code></pre>
 </div>
 </div>
-<div id="basics" class="section level3">
-<h3><strong>3. Basics</strong></h3>
+<div id="basics" class="section level2">
+<h2><strong>3. Basics</strong></h2>
 <div id="a.-text-formating" class="section level4">
 <h4><strong>a. Text formating</strong></h4>
+<p>The following code chunks present how text should look like when written in Markdown. To prevent the text from actually being formatted, we put it into code chunks.</p>
 <pre class="r"><code>Write normally for plain text </code></pre>
 <p>Write normally for plain text</p>
 <pre class="r"><code>&gt; You can highlight some chunk of text or blockquotes with the greater-than sign</code></pre>
@@ -424,13 +425,9 @@ tinytex::install_tinytex()  # install TinyTeX</code></pre>
 ##### Header 5   
 ###### Header 6
 
-Alternatively, for H1 and H2, an underline-ish style:
+Alternatively, for H1, an underline-ish style:
 
 Alt-H1
-
-======
-
-Alt-H2
 
 ------</code></pre>
 </div>
@@ -448,13 +445,8 @@ Alt-H2
 <h5>Header 5</h5>
 <div id="header-6" class="section level6">
 <h6>Header 6</h6>
-<p>Alternatively, for H1 and H2, an underline-ish style:</p>
-</div>
-</div>
-</div>
-</div>
-<div id="alt-h2" class="section level3">
-<h3>Alt-H2</h3>
+<p>Alternatively, for H1, an underline-ish style:</p>
+<p>Alt-H1</p>
 <hr />
 <pre class="r"><code>Inline code blocks are highlighted using back-ticks, for example the package `ggplot2` </code></pre>
 <p>Inline code blocks are highlighted using back-ticks, for example the package <code>ggplot2</code></p>
@@ -485,21 +477,19 @@ Alt-H2
 </ol></li>
 </ol>
 </div>
+</div>
+</div>
+</div>
 <div id="b.-chunk-code-chunk-options" class="section level3">
 <h3><strong>b. Chunk code &amp; Chunk options</strong></h3>
-<p>If you want to execute your code in RMarkdown, put them into the following code chunk brackets ( <strong>or press Ctrl + ALt + I</strong> ). For example:</p>
-<pre class="r"><code>  test &lt;- rnorm(20, mean = 0, sd = 3)
-  mean(test)</code></pre>
-<pre><code>## [1] -0.4169702</code></pre>
-<pre class="r"><code>  sd(test)</code></pre>
-<pre><code>## [1] 2.754065</code></pre>
+<p>If you want to execute your code in RMarkdown, put them into code chunk brackets ( <strong>or press Ctrl + ALt + I</strong> ). For example:</p>
+<pre class="r"><code>test &lt;- rnorm(20, mean = 0, sd = 3)
+mean(test)</code></pre>
+<pre><code>## [1] -0.05555</code></pre>
+<pre class="r"><code>sd(test)</code></pre>
+<pre><code>## [1] 2.649</code></pre>
+<p>```</p>
 <p>A (newer version)cheatsheet of can be found here: <a href="https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf" class="uri">https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf</a></p>
-</div>
-<div id="text-formatting" class="section level3">
-<h3>text formatting</h3>
-</div>
-<div id="chunk-options-for-code" class="section level3">
-<h3>chunk options for code</h3>
 </div>
 <div id="visualisation-formatting" class="section level3">
 <h3>visualisation formatting</h3>

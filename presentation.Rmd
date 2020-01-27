@@ -9,11 +9,11 @@ output: html_document
 
 ------
 
-### __1. General__
+## __1. General__
 RMarkdown can be used to save and execute codes, as well as generate high-quality reports to be shared with the audience.
 
 
-### __2. Installation__
+## __2. Installation__
 
 #### __a. Prerequisite__
 Make sure that you have the __latest version of R and RStudio__. It was not officially mentioned on the RMarkdown official guide, but I did run into troubles trying to install RMarkdown without knowing that some conflicts could exist if you were not to get R in your computer updated.
@@ -43,9 +43,13 @@ tinytex::install_tinytex()  # install TinyTeX
 ```
 
 
-### __3. Basics__
+## __3. Basics__
 
 #### __a. Text formating__
+
+The following code chunks present how text should look like when written in 
+Markdown. To prevent the text from actually being formatted, we put it into
+code chunks.
 
 ```{r eval = F}
 Write normally for plain text 
@@ -81,13 +85,9 @@ You can have different sizes of header with the number sign #
 ##### Header 5   
 ###### Header 6
 
-Alternatively, for H1 and H2, an underline-ish style:
+Alternatively, for H1, an underline-ish style:
 
 Alt-H1
-
-======
-
-Alt-H2
 
 ------
 ```
@@ -99,9 +99,10 @@ Alt-H2
 ##### Header 5   
 ###### Header 6
 
-Alternatively, for H1 and H2, an underline-ish style:
+Alternatively, for H1, an underline-ish style:
 
-### Alt-H2
+
+Alt-H1
 
 ------
 
@@ -141,29 +142,21 @@ Inline code blocks are highlighted using back-ticks, for example the package `gg
 
 ### __b. Chunk code & Chunk options__
 
-If you want to execute your code in RMarkdown, put them into the following code chunk brackets ( __or press Ctrl + ALt + I__ ). For example:
+If you want to execute your code in RMarkdown, put them into code chunk brackets
+(but don't normally put them as a comment - we just did this to demonstrate how
+it should look). You can get the brackes by  ___pressing Ctrl + ALt + I__ ).
 
-```{r}
+```{r eval = F}
+  #```{r}
   test <- rnorm(20, mean = 0, sd = 3)
   mean(test)
   sd(test)
+  # ```
 ```
 
 
+A (newer version) cheatsheet of RMarkdown can be found here: https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf
 
-
-
-
-
-
-
-A (newer version)cheatsheet of can be found here: https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf
-
-
-
-### text formatting
-
-### chunk options for code
 ### visualisation formatting
 ### table and reporting formatting
 ### document types and presentations)
