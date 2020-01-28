@@ -55,15 +55,15 @@ Write normally for plain text
 
 Write in italics using *single asterisks* or _single underscores_
 
-Wrie in bold using **double asterisks** or __double underscore__
+Write in bold using **double asterisks** or __double underscore__
 
 You can have different sizes of header with the number sign #:
 
-# Header 1   
-## Header 2   
-### Header 3   
-#### Header 4   
-##### Header 5   
+# Header 1
+## Header 2
+### Header 3
+#### Header 4
+##### Header 5
 ###### Header 6
 
 Alternatively, you can add a horinzontal line to separate sections of your report:
@@ -72,12 +72,11 @@ Alternatively, you can add a horinzontal line to separate sections of your repor
 
 Inline code blocks are highlighted using back-ticks, for example the package `ggplot2`
 
-
+- This is not limited to using asterisks
 * You can create bullet points by setting an asterisk, just remember **the space between the asterisk and your text**:
   + Then add first sub-point with a plus sign
   + Another sub-point
     - Then a sub-sub-point using minus sign
-    
 
 1. You can create numbered list with, well, numbers.
 2. Something something
@@ -88,22 +87,23 @@ And finally, you can also run code inline. So, if I want to report the mean of
 some variable directly in the text, I can write `#r mean(cars$speed)` (without
 the hashtag) to get the result, `r mean(cars$speed)`.
 
-### __b. Chunk code & Chunk options__
+### __b. Code Chunks & Chunk Options__
 
 If you want to execute your code in RMarkdown, put them into the following code chunk brackets ( __or press Ctrl + ALt + I__ ). The codes are displayed in a gray box, while the outputs are in a white box. For example:
+<!-- note down hotkeys for Mac! -->
 
 ```{r}
-  library(tidyr)
-  library(ggplot2)
-  paste("Welcome","to","RMarkDown!")
-  data <- iris
-  data.plot <- data %>% pivot_longer(-Species, names_to = "Measurement", values_to = "Value")
-  ggplot(data.plot, aes(group = Measurement, x = Measurement, y = Value)) + 
-    geom_boxplot() +
-    facet_grid(. ~ Species) +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1))
-  lm.model <- lm(Petal.Length ~ Sepal.Length + Sepal.Width + Petal.Width, data = data)
-  summary(lm.model)
+library(tidyr)
+library(ggplot2)
+paste("Welcome","to","RMarkDown!")
+data <- iris
+data.plot <- data %>% pivot_longer(-Species, names_to = "Measurement", values_to = "Value")
+ggplot(data.plot, aes(group = Measurement, x = Measurement, y = Value)) + 
+  geom_boxplot() +
+  facet_grid(. ~ Species) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+lm.model <- lm(Petal.Length ~ Sepal.Length + Sepal.Width + Petal.Width, data = data)
+summary(lm.model)
 ```
 
 Try not to crowd your code chunk like that. Instead of that, divide your work into smaller steps so you can comment on them easily.
@@ -122,7 +122,7 @@ library(ggplot2)
 * If you only want to show some __codes without running them__, type in chunk option `eval = FALSE`
 
 ```{r eval = FALSE}
-  paste("Welcome","to","RMarkDown!")
+  print("Welcome to RMarkDown!") # think of a less friendly greeting; we don't want people to feel comfortable here!
 ```
 
 * On the other hand, if you want to show some __results without the codes__, type in chunk option `echo = FALSE`
@@ -138,7 +138,7 @@ useful options to change this behaviour (standard behaviour is mentioned):
 
 - `eval = TRUE`: Run code in chunk
 - `echo = TRUE`: display the source code in the document
-- `results = markup`: how to display the results of a code chunk
+- `results = 'markup'`: how to display the results of a code chunk
 - `include = TRUE`: Include anything from the code at all (`include = FALSE` is equal to `echo = FALSE, results = 'hide', warning = FALSE, message = FALSE`)
 
 Additionally, the first option in a code chunk can be the label of that chunk.
